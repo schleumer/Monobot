@@ -39,11 +39,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UOL.cs" />
+    <Compile Include="SessionNodeStore.cs" />
+    <Compile Include="IService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="deps\Newtonsoft.Json.dll" />
-    <None Include="deps\Newtonsoft.Json.pdb" />
-    <None Include="deps\Newtonsoft.Json.xml" />
+    <None Include="README.md" />
+    <None Include="configuration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>
