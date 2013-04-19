@@ -6,6 +6,8 @@ using System.ComponentModel;
 
 namespace Monobot
 {
+
+
 	public class SessionColors
 	{
 		private List<String> _data = new List<String> (){
@@ -27,7 +29,7 @@ namespace Monobot
 		}
 	}
 
-	public class SessionNode : Gtk.TreeNode
+	public class SessionNode
 	{
 		private string _name;
 			
@@ -126,13 +128,15 @@ namespace Monobot
 			
 	}
 		
-	public class SessionNodeStore : Gtk.NodeStore
+	public class SessionNodeStore : Dictionary<string, SessionNode>
 	{
-		public SessionNodeStore () : base( typeof(SessionNode) )
+
+		public SessionNodeStore ()
 		{
-			JObject o = JObject.Parse (System.IO.File.ReadAllText ("configuration.json"));
-			foreach (var i in (JArray)o["sessions"]) {
-				this.AddNode (new SessionNode (){
+
+			foreach (var item in Settings.Sessions) {
+				var i = item.Value;
+				this.Add (item.Key ,new SessionNode (){
 						Name = (string)i["name"],
 						Url = (string)i["url"],
 						Nickname = (string)i["nickname"],
